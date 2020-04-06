@@ -4,7 +4,7 @@ const app = express();
 
 // Route handler
 app.get('/', (req, res) => {
-  res.send({ 'Hi': 'There' });
+  res.send({ 'Hi': 'Buddy' });
 })
 
 // Get port dynamically
