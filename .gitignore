@@ -1,1 +1,4 @@
+# node libs
 node_modules
+# cleint information
+keys.js
