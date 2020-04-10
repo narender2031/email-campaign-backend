@@ -1,26 +1,14 @@
 const express = require('express');
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const { googleClientId, googleClientSecret } = require('./config/keys');
+// Import routes 
+const authRoutes = require('./routes/authRoutes');
+// Nothing to assign so we don't need it to create the variable
+require('./services/passport');
+
 // Define App with express function
 const app = express();
 
-// passport auth
-passport.use(new GoogleStrategy({
-  clientID: googleClientId,
-  clientSecret: googleClientSecret,
-  callbackURL: '/auth/google/callback'
-}, (accessToken, refreshToken, profile, done) => { console.log({accessToken: accessToken, refreshToken: refreshToken, profile: profile, done: done}) }));
-
-
-// Route handler
-
-app.get('/auth/google', passport.authenticate('google', {
-  scope: ['profile', 'email'],
-}))
-
-
-app.get('/auth/google/callback', passport.authenticate('google'))
+// initialize the authRoutes function
+authRoutes(app);
 
 // Get port dynamically
 const PORT = process.env.PORT || 5000;
