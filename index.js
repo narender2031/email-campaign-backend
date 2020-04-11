@@ -18,7 +18,7 @@ app.use(cookieSession({
   maxAge: 60 * 60 * 1000,
   keys: [cookieKey] 
 }))
-
+// Middleware to handle all requests before it goes to routes. 
 app.use(passport.initialize());
 app.use(passport.session());
 // initialize the authRoutes function
