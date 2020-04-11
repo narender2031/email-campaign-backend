@@ -5,6 +5,8 @@ const authRoutes = require('./routes/authRoutes');
 require('./services/passport');
 // require mongoose
 require('./services/mongoose');
+// Load the user model
+require('./models/user');
 
 // Define App with express function
 const app = express();
