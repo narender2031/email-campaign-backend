@@ -3,6 +3,8 @@ const express = require('express');
 const authRoutes = require('./routes/authRoutes');
 // Nothing to assign so we don't need it to create the variable
 require('./services/passport');
+// require mongoose
+require('./services/mongoose');
 
 // Define App with express function
 const app = express();
