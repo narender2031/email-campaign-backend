@@ -1,36 +1,31 @@
 import * as React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import Header from './Header';
+import { connect } from 'react-redux';
+import *  as actions from '../actions';
 
 const Landing = () => <h1>Landing</h1>;
-const Header = () => {
-  return (
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Emaily</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#">Login with google</a></li>
-        </ul>
-      </div>
-    </nav>
-  );
-};
-
 const Dashboard = () => <h1>Dashboard</h1>;
 const SurveyNew = () => <h1>SurveyNew</h1>;
 
-const App = () => {
-  return (
-    <div>
-      <BrowserRouter>
-        <div>
-          <Header />
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/surveys" component={Dashboard} />
-          <Route path="/survey/new" component={SurveyNew} />
-        </div>
-      </BrowserRouter>
-    </div>
-  )
-}
+const App = props => {
 
-export default App;
+  React.useEffect(() => {
+    props.fetchUser();
+  })
+
+	return (
+		<div className="container">
+			<BrowserRouter>
+				<div>
+					<Header />
+					<Route exact path="/" component={Landing} />
+					<Route exact path="/surveys" component={Dashboard} />
+					<Route path="/survey/new" component={SurveyNew} />
+				</div>
+			</BrowserRouter>
+		</div>
+	);
+};
+
+export default connect(null, actions)(App);
